@@ -31,13 +31,13 @@ jobs:
         shell: pwsh
         run: |
           python -m pip install --upgrade pip setuptools wheel
-          pip install pyinstaller
+          pip install nuitka
           if (Test-Path requirements.txt) { pip install -r requirements.txt }
 
-      - name: Build with PyInstaller
+      - name: Build with Nuitka
         shell: pwsh
         run: |
-          pyinstaller --noconfirm --onefile --name Caffeine caffeine.py
+          python -m nuitka --onefile --assume-yes-for-downloads --output-filename=Caffeine.exe caffeine.py
 
       - name: List dist
         shell: pwsh
