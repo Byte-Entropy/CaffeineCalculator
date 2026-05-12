@@ -1,0 +1,19 @@
+# build / distribution artifacts
+caffeine.dist/
+caffeine.build/
+caffeine.onefile-build/
+caffeine.bin
+__pycache__/
+*.pyc
+dist/
+build/
+*.egg-info/
+/.cache/
+.DS_Store
+venv/
+env/
+*.so
+*.dll
+*.exe
+/.venv/
+/.venv*/
