@@ -37,12 +37,16 @@ jobs:
       - name: Build with Nuitka
         shell: pwsh
         run: |
-          python -m nuitka --onefile --assume-yes-for-downloads --output-filename=Caffeine.exe caffeine.py
+          python -m nuitka --onefile --assume-yes-for-downloads --output-dir=dist --output-filename=Caffeine.exe caffeine.py
 
       - name: List dist
         shell: pwsh
         run: |
-          Get-ChildItem -Force dist
+          if (Test-Path dist) {
+            Get-ChildItem -Force dist
+          } else {
+            Write-Error "dist directory was not created. Build may have failed; check Nuitka output above."
+          }
 
       - name: Upload exe to release
         uses: softprops/action-gh-release@v2
